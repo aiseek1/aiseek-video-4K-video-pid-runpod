@@ -1,0 +1,72 @@
+AISEEK VIDEO PID 4K UPSCALER — RUNPOD TEMPLATE V2
+=====================================================
+
+BASE IMAGE
+ghcr.io/ashleykleynhans/comfyui:cu128-py312-v0.37.0
+
+WHY THIS BASE
+- CUDA 12.8.1
+- Python 3.12
+- PyTorch 2.11.0 in the current cu128 image family
+- The upstream project specifically provides CUDA 12.8 templates for RTX 5090
+- Uses /workspace/ComfyUI and the same RunPod service layout tested on the live Pod
+
+RECOMMENDED GPU
+RTX 5090 — 32 GB VRAM
+
+GPU COMPATIBILITY
+Minimum VRAM: 24 GB
+Minimum CUDA Version: 12.8
+Recommended GPU: RTX 5090
+
+RUNPOD TEMPLATE SETTINGS
+
+Template type:
+Pods
+
+Compute:
+NVIDIA / GPU
+
+Container Image:
+ghcr.io/YOUR_GITHUB_USERNAME/aiseek-video-pid-4k-upscaler:v2.0.0
+
+Container Disk:
+40 GB
+
+Persistent storage:
+Volume disk
+
+Volume Disk:
+100 GB
+
+Persistent storage mount path:
+/workspace
+
+Public template:
+On (when ready to publish)
+
+HTTP Ports:
+Label: ComfyUI
+Port: 3000
+
+Optional admin ports for your private testing:
+JupyterLab 8888
+Application Manager 8000
+RunPod File Uploader 2999
+Code Server 7777
+
+TCP:
+22 only if you want SSH exposed.
+
+Start command:
+LEAVE BLANK
+
+Registry authentication:
+NONE after the GHCR package is Public.
+
+Environment variables:
+No AISEEK-specific variables are required.
+
+IMPORTANT
+Do not use port 8188 with this image.
+This image's public ComfyUI service is port 3000 (proxied to internal 3001).
